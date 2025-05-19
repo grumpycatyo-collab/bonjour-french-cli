@@ -1,4 +1,6 @@
+from pathlib import Path
 
+FRENCH_PHRASES_FILE = Path.home() / ".french__phrases.txt"
 def store_in_file(phrase: str, translation: str) -> None:
     """
     Store the French phrase and its translation in a dictionary.
@@ -8,7 +10,7 @@ def store_in_file(phrase: str, translation: str) -> None:
         translation (str): The English translation of the phrase.
     """
     try:
-        with open("french_phrases.txt", "a") as file:
+        with open(FRENCH_PHRASES_FILE, "a") as file:
             file.write(f"{phrase} ({translation})\n")
             return None
     except Exception as e:
@@ -24,7 +26,7 @@ def read_from_file() -> list:
         list: A list of tuples containing the French phrase and its translation.
     """
     try:
-        with open("french_phrases.txt", "r") as file:
+        with open(FRENCH_PHRASES_FILE, "r") as file:
             lines = file.readlines()
             phrases = [line.strip() for line in lines]
             return phrases
